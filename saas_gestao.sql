@@ -22,6 +22,7 @@ CREATE TABLE empresas (
     nome_empresa VARCHAR(150) NOT NULL,
     nome_responsavel VARCHAR(150) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
+    cnpj VARCHAR(18) NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     site VARCHAR(150),
     foto_url VARCHAR(255),
@@ -89,9 +90,9 @@ CREATE TABLE tickets (
 CREATE TABLE tokens_recuperacao (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
-    token VARCHAR(255) NOT NULL UNIQUE
+    token VARCHAR(255) NOT NULL UNIQUE,
     expires_at DATETIME NOT NULL,
     usado BOOLEAN DEFAULT FALSE,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-);  
+);

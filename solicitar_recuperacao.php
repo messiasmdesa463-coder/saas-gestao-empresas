@@ -1,6 +1,13 @@
 <?php
-require 'conexao.php';
-require 'enviar_email.php';
+require __DIR__ . '/conexao.php';
+
+if (!isset($pdo) || !($pdo instanceof PDO)) {
+    http_response_code(500);
+    echo json_encode(['erro' => 'Falha na conexão com o banco. Verifique o MySQL no Laragon.']);
+    exit;
+}
+
+require __DIR__ . '/enviar_email.php';
 
 $dados = json_decode(file_get_contents('php://input'), true);
 

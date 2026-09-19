@@ -11,15 +11,15 @@ function enviarEmail($destinatario, $assunto, $corpo) {
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // ajuste conforme seu provedor
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'seuemail@gmail.com'; // seu e-mail
-        $mail->Password = 'sua_senha_de_app'; // senha de app (não a senha normal)
+        $mail->Username = 'suportesaasgestao@gmail.com';
+        $mail->Password = 'idycgbrndvscasap';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('seuemail@gmail.com', 'Sistema SaaS');
+        $mail->setFrom('suportesaasgestao@gmail.com', 'Sistema SaaS Gestão');
         $mail->addAddress($destinatario);
 
         $mail->isHTML(true);

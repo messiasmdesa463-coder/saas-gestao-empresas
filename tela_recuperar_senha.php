@@ -6,179 +6,62 @@
 <title>Recuperar Senha</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  body {
-    display: flex;
-    justify-content: center;
-    padding: 32px 16px;
-    background: linear-gradient(180deg, #f5f7ff 0%, #f3f6fb 100%);
-  }
+  body { display: flex; justify-content: center; padding: var(--espaco-xl) var(--espaco-lg); }
+  .tela { width: 100%; max-width: 440px; }
 
-  .tela {
-    width: 100%;
-    max-width: 460px;
-  }
-
-  .topo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .topo .voltar {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: var(--cor-texto-titulo);
-  }
-
-  .topo .icone {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--cor-primaria), #2d4bd8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 18px rgba(79, 70, 229, 0.2);
-  }
-
+  .topo { display: flex; align-items: center; gap: var(--espaco-md); margin-bottom: var(--espaco-xl); }
+  .topo .voltar { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--cor-texto-titulo); }
+  .topo .icone { width: 36px; height: 36px; border-radius: var(--raio-padrao); background: var(--cor-primaria); display: flex; align-items: center; justify-content: center; }
   .topo .icone svg { width: 20px; height: 20px; }
-  .topo h2 { font-size: 17px; margin: 0; }
+  .topo h2 { font-size: 17px; }
 
-  .card-central { text-align: center; margin-bottom: 20px; }
-
+  .card-central { text-align: center; margin-bottom: var(--espaco-lg); }
   .icone-central {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--cor-primaria), #2d4bd8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
+    width: 72px; height: 72px; border-radius: 50%; background: var(--cor-primaria);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto var(--espaco-md);
     position: relative;
-    box-shadow: 0 12px 22px rgba(79, 70, 229, 0.2);
   }
-
   .icone-central svg { width: 32px; height: 32px; }
   .selo-cadeado {
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--cor-sucesso);
-    border: 3px solid var(--cor-fundo);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
+    position: absolute; bottom: -2px; right: -2px; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--cor-sucesso); border: 3px solid var(--cor-fundo);
+    display: flex; align-items: center; justify-content: center; font-size: 11px;
   }
-
   .rotulo-seguranca {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--cor-primaria);
-    margin-bottom: 10px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--cor-primaria); margin-bottom: var(--espaco-sm);
   }
+  .card-central h1 { font-size: 24px; margin-bottom: var(--espaco-sm); }
+  .card-central p { font-size: 14px; color: var(--cor-texto-suave); }
 
-  .card-central h1 {
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-
-  .card-central p {
-    font-size: 14px;
-    color: var(--cor-texto-suave);
-    line-height: 1.5;
-  }
-
-  .card-form {
-    background: #fff;
-    border: 1px solid var(--cor-borda);
-    border-radius: 18px;
-    padding: 20px 18px;
-    box-shadow: var(--sombra-card);
-    margin-bottom: 18px;
-  }
-
-  .campo {
-    margin-bottom: 16px;
-  }
-
-  .campo input {
-    background: #f8fafc;
-    border: 1px solid #dfe7f2;
-    border-radius: 12px;
-    min-height: 48px;
-    padding: 0 14px;
-  }
+  .card-form { background: #FFFFFF; border: 1px solid var(--cor-borda); border-radius: var(--raio-lg); padding: var(--espaco-xl); box-shadow: var(--sombra-card); margin-bottom: var(--espaco-lg); }
 
   .info-box {
-    display: flex;
-    gap: 10px;
-    background: var(--cor-primaria-fundo-suave);
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 13px;
-    color: var(--cor-texto-corpo);
-    margin: 10px 0 16px;
+    display: flex; gap: var(--espaco-md); background: var(--cor-primaria-fundo-suave);
+    border-radius: var(--raio-padrao); padding: var(--espaco-md); font-size: 13px; color: var(--cor-texto-corpo); margin: var(--espaco-md) 0 var(--espaco-lg);
   }
 
   .btn-full { width: 100%; }
 
   .card-suporte {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid var(--cor-borda);
-    border-radius: 14px;
-    padding: 14px 16px;
-    font-size: 13px;
-    color: var(--cor-texto-corpo);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--espaco-md);
+    background: var(--cor-fundo); border-radius: var(--raio-md); padding: var(--espaco-lg);
+    font-size: 13px; color: var(--cor-texto-corpo);
   }
 
+  /* Etapa 2: código */
   #etapaCodigo { display: none; }
-
-  .codigo-inputs {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin: 18px 0;
-  }
-
+  .codigo-inputs { display: flex; gap: var(--espaco-sm); justify-content: center; margin: var(--espaco-lg) 0; }
   .codigo-inputs input {
-    width: 44px;
-    height: 52px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    border: 1px solid var(--cor-borda);
-    border-radius: 12px;
-    background: #f8fafc;
+    width: 44px; height: 52px; text-align: center; font-size: 22px; font-weight: 700;
+    border: 1px solid var(--cor-borda); border-radius: var(--raio-padrao); background: var(--cor-fundo);
   }
-
-  .codigo-inputs input:focus {
-    outline: none;
-    border: 2px solid var(--cor-primaria);
-    background: #fff;
-  }
+  .codigo-inputs input:focus { outline: none; border: 2px solid var(--cor-primaria); background: #FFFFFF; }
 
   .erro-msg, .sucesso-msg {
-    display: none;
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 13px;
-    margin-bottom: 16px;
+    display: none; border-radius: var(--raio-padrao); padding: var(--espaco-md);
+    font-size: 13px; margin-bottom: var(--espaco-lg);
   }
-
   .erro-msg { background: var(--cor-erro-fundo); color: var(--cor-erro-texto); }
   .sucesso-msg { background: var(--cor-sucesso-fundo); color: var(--cor-sucesso-texto); }
 </style>
@@ -257,7 +140,7 @@
 
   <div class="card-suporte">
     <span>Não recebeu o código?</span>
-    <a href="mailto:suporte@saasgestao.com" style="color:var(--cor-primaria); font-weight:600; text-decoration:none;">Contatar suporte</a>
+    <a href="mailto:suportesaasgestao@gmail.com" style="color:var(--cor-primaria); font-weight:600; text-decoration:none;">Contatar suporte</a>
   </div>
 
 </div>

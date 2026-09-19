@@ -1,13 +1,6 @@
 <?php
-require __DIR__ . '/conexao.php';
-
-if (!isset($pdo) || !($pdo instanceof PDO)) {
-    http_response_code(500);
-    echo json_encode(['erro' => 'Falha na conexão com o banco. Verifique o MySQL no Laragon.']);
-    exit;
-}
-
-require __DIR__ . '/enviar_email.php';
+require 'conexao.php';
+require 'enviar_email.php';
 
 $dados = json_decode(file_get_contents('php://input'), true);
 
@@ -20,9 +13,9 @@ if (empty($dados['email'])) {
 $email = $dados['email'];
 
 // Confirma que o e-mail existe (em empresas OU usuarios)
-$stmt = $pdo->prepare("SELECT id FROM empresas WHERE email = :email 
-                        UNION SELECT id FROM usuarios WHERE email = :email");
-$stmt->execute(['email' => $email]);
+$stmt = $pdo->prepare("SELECT id FROM empresas WHERE email = :email1 
+                        UNION SELECT id FROM usuarios WHERE email = :email2");
+$stmt->execute(['email1' => $email, 'email2' => $email]);
 
 if (!$stmt->fetch()) {
     // Por segurança, não revela se o e-mail existe ou não
